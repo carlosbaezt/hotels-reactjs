@@ -12,7 +12,7 @@ function Hero(props) {
                     <h1 className="title">Hoteles</h1>
                     <h2 className="subtitle">
                         desde el <strong>{dateFrom.toLocaleDateString("es-ES", dateOptions)}</strong> hasta el <strong>{dateTo.toLocaleDateString("es-ES", dateOptions)}</strong>
-                        {country !== '' && ` en ${country}` }  {price > 0 && `por $${price}` } {rooms > 0 && `de hasta ${rooms} habitaciones` }
+                        {country !== undefined && ` en ${country}` }  {price !== undefined && `por $${price}` } {rooms !== undefined && `de hasta ${rooms} habitaciones` }
                     </h2>
                     </div>
                 </div>
