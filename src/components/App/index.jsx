@@ -2,21 +2,35 @@ import Hero from '../Hero';
 import React from 'react';
 import Filters from '../Filters';
 
-function App() {
-    const today = new Date();
-    const filters = {
-      dateFrom: today, 
-      dateTo: new Date(today.valueOf() + 86400000),
-      country: undefined,
-      price: undefined,
-      rooms: undefined
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        const today = new Date();
+        this.state = {    
+            filters: {
+                dateFrom: today, 
+                dateTo: new Date(today.valueOf() + 86400000),
+                country: undefined,
+                price: undefined,
+                rooms: undefined
+            }
+        }
     }
-  
-    return (
-      <div>
-        <Hero filters={ filters } />
-        <Filters filters={ filters } />
-      </div>
-    )
+
+    handleFilterChange = (filters) => {
+        this.setState({
+          filters: filters
+        })
+    }
+
+    render() {      
+        return (
+          <div>
+            <Hero filters={ this.state.filters } />
+            <Filters filters={ this.state.filters } onFilterChange={ this.handleFilterChange } />
+          </div>
+        )
+    }
 }
 export default App;
