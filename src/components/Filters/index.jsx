@@ -1,6 +1,7 @@
 import React from 'react';
 import DateFilter from '../DateFilter';
 import OptionsFilter from '../OptionsFilter';
+import moment from 'moment'
 
 class Filters extends React.Component {
 
@@ -12,7 +13,7 @@ class Filters extends React.Component {
 
     onDateChange(event) {
         let payload = this.props.filters;
-        this.props.filters[event.target.name] = new Date(event.target.value);
+        this.props.filters[event.target.name] = moment(event.target.value).toDate();
         this.props.onFilterChange(payload);
     }
 
