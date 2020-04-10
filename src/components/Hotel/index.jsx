@@ -4,8 +4,14 @@ import Location from '../Location';
 import Room from '../Room';
 
 class Hotel extends React.Component {
+
+    onBookEvent = (event) => {
+        event.preventDefault();
+        alert('Funcionalidad pendiente por implementar');
+    }
+
     render() {
-        const {name, photo, description, rooms, city, country, price} = this.props.data;
+        const {slug, name, photo, description, rooms, city, country, price} = this.props.data;
         return(
             <div className="card">
                 <div className="card-image">
@@ -29,13 +35,13 @@ class Hotel extends React.Component {
                         </div>
                         <div className="control">
                             <div className="tags">
-                                <Price price={price} />
+                                <Price price={price} slug={slug} />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="card-footer">
-                    <a href="javascript:alert('No implementamos esto aún :(')" className="card-footer-item has-background-primary has-text-white has-text-weight-bold">Reservar</a>
+                    <a href="_blank" onClick={this.onBookEvent} className="card-footer-item has-background-primary has-text-white has-text-weight-bold">Reservar</a>
                 </div>
             </div>
         );
