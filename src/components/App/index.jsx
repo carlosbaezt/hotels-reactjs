@@ -8,10 +8,11 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         const today = new Date();
-        this.state = {    
+        today.setHours(0,0,0,0);
+        this.state = {
             filters: {
                 dateFrom: today, 
-                dateTo: new Date(today.valueOf() + 86400000),
+                dateTo: new Date(today.valueOf() + 8640000000),
                 country: undefined,
                 price: undefined,
                 rooms: undefined
@@ -41,14 +42,45 @@ class App extends React.Component {
         })
     }
 
-    render() {      
+    render() {
+        const {hotels, filters} = this.state;
+        const hotelsFiltered = this.filterHotels(hotels,filters);
         return (
           <div>
-            <Hero filters={ this.state.filters } />
-            <Filters filters={ this.state.filters } onFilterChange={ this.handleFilterChange } />
-            <Hotels data={ this.state.hotels } loading={this.state.loadingHotels}/>
+            <Hero filters={ filters } />
+            <Filters filters={ filters } onFilterChange={ this.handleFilterChange } />
+            <Hotels data={ hotelsFiltered } loading={ this.state.loadingHotels }/>
           </div>
         )
     }
+
+    filterHotels(hotels, filters) {
+      const dateFrom = filters.dateFrom.getTime();
+      const dateTo = filters.dateTo.getTime();
+      console.log(filters);
+      return hotels.filter((hotel) => {
+        
+        if(hotel.availabilityFrom < dateFrom || hotel.availabilityTo > dateTo) {
+          return false;
+        }
+        
+        if((filters.country !== undefined && filters.country !== '') && filters.country !== hotel.country) {
+          return false;
+        }
+
+        if((filters.price !== undefined && filters.price !== '') && parseInt(filters.price) !== hotel.price) {
+          return false;
+        }
+
+        if((filters.rooms !== undefined && filters.rooms !== '') && parseInt(filters.rooms) < hotel.rooms) {
+          return false;
+        }
+
+        return true;
+      });
+    }
+
+
+
 }
 export default App;
