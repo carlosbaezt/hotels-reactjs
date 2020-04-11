@@ -1,27 +1,24 @@
 import React from 'react';
-import moment from 'moment';
+import DatePicker from 'react-date-picker';
 
 class DateFilter extends React.Component {
-    constructor(props) {
-        super(props)
-        this.handleDateChange = this.handleDateChange.bind(this)
-    }
-
-    handleDateChange(event) {
-        this.props.onDateChange(event)
+    handleDateChange = (name, date)  => {
+        this.props.onDateChange(name, date);
     }
 
     render() {
         const {date, icon, name} = this.props;
-        const dateFormatted = moment(date).format('YYYY-MM-DD');
         return(
             <div className="field">
                 <div className="control has-icons-left">
-                    <input className="input"
-                           type="date"
-                           value={dateFormatted}
-                           name={ name }
-                           onChange={ this.handleDateChange } />
+                    <DatePicker
+                        calendarIcon={null}
+                        clearIcon={null}
+                        className="input date-picker"
+                        value={date}
+                        name={ name }
+                        onChange={ (date) => this.handleDateChange(name, date) }
+                    />
                     <span className="icon is-small is-left">
                     <i className={`fas fa-${icon}`}></i>
                     </span>
