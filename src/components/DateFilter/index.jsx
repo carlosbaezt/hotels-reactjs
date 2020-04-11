@@ -2,10 +2,6 @@ import React from 'react';
 import DatePicker from 'react-date-picker';
 
 class DateFilter extends React.Component {
-    handleDateChange = (name, date)  => {
-        this.props.onDateChange(name, date);
-    }
-
     render() {
         const {date, icon, name} = this.props;
         return(
@@ -14,10 +10,11 @@ class DateFilter extends React.Component {
                     <DatePicker
                         calendarIcon={null}
                         clearIcon={null}
+                        format="dd/MM/y"
                         className="input date-picker"
                         value={date}
                         name={ name }
-                        onChange={ (date) => this.handleDateChange(name, date) }
+                        onChange={ (date) => this.props.onDateChange(name, date) }
                     />
                     <span className="icon is-small is-left">
                     <i className={`fas fa-${icon}`}></i>

@@ -12,7 +12,7 @@ class App extends React.Component {
             filters: {
                 dateFrom: today,
                 //adding 10 days since today
-                dateTo: new Date(today.valueOf() + 8640000000),
+                dateTo: new Date(today.valueOf() + 2592000000),
                 country: undefined,
                 price: undefined,
                 rooms: undefined

@@ -1,16 +1,6 @@
 import React from 'react';
 
 class OptionsFilter extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.handleOptionChange = this.handleOptionChange.bind(this)
-    }
-
-    handleOptionChange(event) {
-        this.props.onOptionChange(event)
-    }
-
     render() {
         const {options, selected, icon, name} = this.props;
     
@@ -28,7 +18,7 @@ class OptionsFilter extends React.Component {
                         <select style={ {width: '100%'} }
                                 defaultValue={selected}
                                 name={ name }
-                                onChange={ this.handleOptionChange }>
+                                onChange={ this.props.onOptionChange }>
                             {optionsToRender}
                         </select>
                     </div>
