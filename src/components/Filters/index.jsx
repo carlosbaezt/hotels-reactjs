@@ -1,7 +1,7 @@
 import React from 'react';
 import DateFilter from '../DateFilter';
 import OptionsFilter from '../OptionsFilter';
-import moment from 'moment'
+import moment from 'moment';
 
 class Filters extends React.Component {
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 class DateFilter extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class DateFilter extends React.Component {
 
     render() {
         const {date, icon, name} = this.props;
-        const dateFormatted = this.formatDate(date);
+        const dateFormatted = moment(date).format('YYYY-MM-DD');
         return(
             <div className="field">
                 <div className="control has-icons-left">
@@ -28,21 +29,6 @@ class DateFilter extends React.Component {
             </div>
         )
     }
-
-    formatDate(date) {
-        var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-    
-        if (month.length < 2) 
-            month = '0' + month;
-        if (day.length < 2) 
-            day = '0' + day;
-    
-        return [year, month, day].join('-');
-    }
 }
-
 
 export default DateFilter;

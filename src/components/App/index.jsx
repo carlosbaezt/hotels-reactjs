@@ -8,8 +8,6 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         const today = new Date();
-        //Set the start today
-        today.setHours(0, 0, 0, 0);
         this.state = {
             filters: {
                 dateFrom: today,
@@ -61,6 +59,11 @@ class App extends React.Component {
 
     filterHotels(hotels, filters) {
         const { dateFrom, dateTo, country, price, rooms } = filters;
+
+        //Setting start and end of the day to get all the possible results
+        dateFrom.setHours(0, 0, 0);
+        dateTo.setHours(23, 59, 59);
+
         const dateFromInMiliseconds = dateFrom.getTime();
         const dateToinMilisecods = dateTo.getTime();
 
