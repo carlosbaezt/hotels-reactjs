@@ -4,7 +4,7 @@ import Hotel from '../Hotel';
 class Hotels extends React.Component {
     render() {
         return(
-        <section className="section" style={ {marginTop: '3em'} }>
+        <section className="section" style={ {marginTop: '2em'} }>
             <div className="container">
                 <div className="columns is-multiline">
                 { this.props.loading ? (
@@ -12,7 +12,7 @@ class Hotels extends React.Component {
                 ) : (
                     this.props.data.length ===  0 ? 
                     (
-                        <article className="message is-warning">
+                        <article className="message is-warning" style={ { width: '100%' } }>
                             <div className="message-body">
                                 No se han encontrado hoteles que coincidan con los parámetros de búsqueda.
                             </div>
