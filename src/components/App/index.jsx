@@ -5,6 +5,8 @@ import Hotels from '../Hotels';
 
 class App extends React.Component {
 
+    API_URL = 'https://wt-8a099f3e7c73b2d17f4e018b6cfd6131-0.sandbox.auth0-extend.com/acamica';
+
     constructor(props) {
         super(props);
         const today = new Date();
@@ -26,7 +28,11 @@ class App extends React.Component {
         this.setState({
             loadingHotels: true
         })
-        fetch('https://wt-8a099f3e7c73b2d17f4e018b6cfd6131-0.sandbox.auth0-extend.com/acamica')
+        this.getHotels();
+    }
+
+    getHotels() {
+        return fetch(this.API_URL)
             .then((response) => response.json())
             .then((hotels) => {
                 //Set timeout to watch progress bar animation
@@ -36,7 +42,8 @@ class App extends React.Component {
                         loadingHotels: false
                     })
                 }, 1000)
-            });
+            })
+            .catch(() => alert('Error en la petición...'));
     }
 
     handleFilterChange = (filters) => {
