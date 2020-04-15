@@ -20,14 +20,11 @@ class App extends React.Component {
                 rooms: undefined
             },
             hotels: [],
-            loadingHotels: true
+            hotelsLoaded: false
         }
     }
 
     componentDidMount() {
-        this.setState({
-            loadingHotels: true
-        })
         this.getHotels();
     }
 
@@ -39,7 +36,7 @@ class App extends React.Component {
                 setTimeout(() => {
                     this.setState({
                         hotels: hotels,
-                        loadingHotels: false
+                        hotelsLoaded: true
                     })
                 }, 1000)
             })
@@ -53,13 +50,13 @@ class App extends React.Component {
     }
 
     render() {
-        const { hotels, filters } = this.state;
+        const { hotels, filters, hotelsLoaded } = this.state;
         const hotelsFiltered = this.filterHotels(hotels, filters);
         return (
             <div>
                 <Hero filters={filters} />
                 <Filters filters={filters} onFilterChange={this.handleFilterChange} />
-                <Hotels data={hotelsFiltered} loading={this.state.loadingHotels} />
+                <Hotels data={hotelsFiltered} hotelsLoaded={hotelsLoaded} />
             </div>
         )
     }

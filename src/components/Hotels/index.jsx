@@ -8,10 +8,7 @@ class Hotels extends React.Component {
             <div className="container">
                 <div className="columns is-multiline">
                 {
-                    this.props.loading ? (
-                        <progress className="progress is-large is-info" max="100"></progress>
-                    ) :
-                    (
+                    this.props.hotelsLoaded ? (
                         this.props.data.length ===  0 ? (
                             <article className="message is-warning" style={ { width: '100%' } }>
                                 <div className="message-body">
@@ -26,7 +23,10 @@ class Hotels extends React.Component {
                                 </div>
                             ))
                         )
-                    )
+                    ) :
+                    (
+                        <progress className="progress is-large is-info" max="100"></progress>
+                    )                    
                 }
                 </div>
             </div>
