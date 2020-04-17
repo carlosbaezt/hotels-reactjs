@@ -13,7 +13,7 @@ class App extends React.Component {
         this.state = {
             filters: {
                 dateFrom: today,
-                //adding 10 days since today
+                //adding 1 month since today
                 dateTo: new Date(today.valueOf() + 2592000000),
                 country: undefined,
                 price: undefined,
