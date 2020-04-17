@@ -10,13 +10,16 @@ function Hero(props) {
             <section className="hero is-primary">
                 <div className="hero-body">
                     <div className="container">
-                    <h1 className="title">Hoteles</h1>
-                    <h2 className="subtitle">
-                        desde el <strong>{dateFromFormatted}</strong> hasta el <strong>{dateToFormatted}</strong>
-                        {country !== undefined && country !== '' && ` en ${country}` } 
-                        {price !== undefined && price !== '' && ` por ${'$'.repeat(price)}` }
-                        {rooms !== undefined && rooms !== '' && ` de hasta ${rooms} habitaciones` }
-                    </h2>
+                        <h1 className="title">Hoteles</h1>
+                        <div className="subtitle">
+                            <h2>Tenemos disponibles hoteles {props.amountOfHotels} en total</h2>
+                            <h2 className="subtitle">
+                                desde el <strong>{dateFromFormatted}</strong> hasta el <strong>{dateToFormatted}</strong>
+                                {country !== undefined && country !== '' && ` en ${country}` } 
+                                {price !== undefined && price !== '' && ` por ${'$'.repeat(price)}` }
+                                {rooms !== undefined && rooms !== '' && ` de hasta ${rooms} habitaciones` }
+                            </h2>
+                        </div>
                     </div>
                 </div>
             </section>

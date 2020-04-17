@@ -54,7 +54,7 @@ class App extends React.Component {
         const hotelsFiltered = this.filterHotels(hotels, filters);
         return (
             <div>
-                <Hero filters={filters} />
+                <Hero filters={filters} amountOfHotels={hotelsFiltered.length} />
                 <Filters filters={filters} onFilterChange={this.handleFilterChange} />
                 <Hotels data={hotelsFiltered} hotelsLoaded={hotelsLoaded} />
             </div>
