@@ -6,7 +6,7 @@ class OptionsFilter extends React.Component {
     
         const optionsToRender = options.map((option) =>
             <option key={option.name}
-                    value={option.value === undefined ? '' : option.value}>
+                    value={option.value}>
                 {option.name}
             </option>
         );

@@ -44,7 +44,7 @@ class Filters extends React.Component {
                 <div className="navbar-item">
                     <OptionsFilter
                         name='country'
-                        options={ [ {value: undefined, name: 'Todos los países'}, {value: 'Argentina', name: 'Argentina'}, {value: 'Brasil', name: 'Brasil'}, {value: 'Chile', name: 'Chile'}, {value: 'Uruguay', name: 'Uruguay'} ] }
+                        options={ [ {value: '', name: 'Todos los países'}, {value: 'Argentina', name: 'Argentina'}, {value: 'Brasil', name: 'Brasil'}, {value: 'Chile', name: 'Chile'}, {value: 'Uruguay', name: 'Uruguay'} ] }
                         selected={ this.props.filters.country }
                         icon="globe"
                         onOptionChange={this.onOptionChange}
@@ -53,7 +53,7 @@ class Filters extends React.Component {
                 <div className="navbar-item">
                     <OptionsFilter
                         name='price'
-                        options={ [ {value: undefined, name: 'Cualquier precio'}, {value: 1, name: '$'}, {value: 2, name: '$$'}, {value: 3, name: '$$$'}, {value: 4, name: '$$$$'} ] }
+                        options={ [ {value: '', name: 'Cualquier precio'}, {value: 1, name: '$'}, {value: 2, name: '$$'}, {value: 3, name: '$$$'}, {value: 4, name: '$$$$'} ] }
                         selected={ this.props.filters.price }
                         icon="dollar-sign"
                         onOptionChange={this.onOptionChange}
@@ -62,7 +62,7 @@ class Filters extends React.Component {
                 <div className="navbar-item">
                     <OptionsFilter
                         name='rooms'
-                        options={ [ {value: undefined, name: 'Cualquier tamaño'}, {value: 10, name: 'Hotel pequeño'}, {value: 20, name: 'Hotel mediano'}, {value: 30, name: 'Hotel grande'} ] }
+                        options={ [ {value: '', name: 'Cualquier tamaño'}, {value: 10, name: 'Hotel pequeño'}, {value: 20, name: 'Hotel mediano'}, {value: 30, name: 'Hotel grande'} ] }
                         selected={ this.props.filters.rooms }
                         icon="bed"
                         onOptionChange={this.onOptionChange}

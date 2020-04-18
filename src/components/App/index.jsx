@@ -15,9 +15,9 @@ class App extends React.Component {
             filters: {
                 dateFrom: moment().toDate(),
                 dateTo: moment().add(1, "month").toDate(),
-                country: undefined,
-                price: undefined,
-                rooms: undefined
+                country: '',
+                price: '',
+                rooms: ''
             },
             hotels: [],
             hotelsLoaded: false
@@ -72,23 +72,17 @@ class App extends React.Component {
         const dateToinMilisecods = dateTo.getTime();
 
         return hotels.filter((hotel) => {
-            if (hotel.availabilityFrom < dateFromInMiliseconds || hotel.availabilityTo > dateToinMilisecods) {
-                return false;
+            if(
+                hotel.availabilityFrom >= dateFromInMiliseconds &&
+                hotel.availabilityTo <= dateToinMilisecods &&
+                (country === '' || country === hotel.country) &&
+                (price === '' || parseInt(price) === hotel.price) &&
+                (rooms === '' ||  hotel.rooms <= parseInt(rooms))
+            ) {
+                return true;
             }
 
-            if ((country !== undefined && country !== '') && country !== hotel.country) {
-                return false;
-            }
-
-            if ((price !== undefined && price !== '') && parseInt(price) !== hotel.price) {
-                return false;
-            }
-
-            if ((rooms !== undefined && rooms !== '') && parseInt(rooms) < hotel.rooms) {
-                return false;
-            }
-
-            return true;
+            return false;
         });
     }
 }
