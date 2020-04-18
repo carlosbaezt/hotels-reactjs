@@ -3,6 +3,7 @@ import React from 'react';
 import Filters from '../Filters';
 import Hotels from '../Hotels';
 import 'bulma/css/bulma.css';
+import moment from 'moment';
 
 class App extends React.Component {
 
@@ -10,12 +11,10 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        const today = new Date();
         this.state = {
             filters: {
-                dateFrom: today,
-                //adding 1 month since today
-                dateTo: new Date(today.valueOf() + 2592000000),
+                dateFrom: moment().toDate(),
+                dateTo: moment().add(1, "month").toDate(),
                 country: undefined,
                 price: undefined,
                 rooms: undefined
