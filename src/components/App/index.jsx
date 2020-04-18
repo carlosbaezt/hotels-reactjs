@@ -2,6 +2,7 @@ import Hero from '../Hero';
 import React from 'react';
 import Filters from '../Filters';
 import Hotels from '../Hotels';
+import 'bulma/css/bulma.css';
 
 class App extends React.Component {
 
