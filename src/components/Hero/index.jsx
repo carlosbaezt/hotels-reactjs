@@ -12,7 +12,7 @@ function Hero(props) {
                     <div className="container">
                         <h1 className="title">Hoteles</h1>
                         <div className="subtitle">
-                            <h2>Tenemos disponibles hoteles {props.amountOfHotels} en total</h2>
+                            <h2>Tenemos disponibles {props.amountOfHotels} hoteles en total</h2>
                             <h2 className="subtitle">
                                 desde el <strong>{dateFromFormatted}</strong> hasta el <strong>{dateToFormatted}</strong>
                                 {country !== undefined && country !== '' && ` en ${country}` } 
