@@ -18,7 +18,7 @@ class OptionsFilter extends React.Component {
                         <select style={ {width: '100%'} }
                                 defaultValue={selected}
                                 name={ name }
-                                onChange={ this.props.onOptionChange }>
+                                onChange={ (event) => this.props.onChange(name, event.target.value) }>
                             {optionsToRender}
                         </select>
                     </div>

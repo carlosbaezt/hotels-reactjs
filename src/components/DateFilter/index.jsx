@@ -14,7 +14,7 @@ class DateFilter extends React.Component {
                         className="input date-picker"
                         value={date}
                         name={ name }
-                        onChange={ (date) => this.props.onDateChange(name, date) }
+                        onChange={ (date) => this.props.onChange(name, date) }
                     />
                     <span className="icon is-small is-left">
                     <i className={`fas fa-${icon}`}></i>
