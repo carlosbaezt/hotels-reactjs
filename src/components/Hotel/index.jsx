@@ -1,7 +1,6 @@
 import React from 'react';
 import Price from '../Price';
-import Location from '../Location';
-import Room from '../Room';
+import DataTag from '../DataTag';
 
 class Hotel extends React.Component {
 
@@ -11,7 +10,10 @@ class Hotel extends React.Component {
     }
 
     render() {
-        const {slug, name, photo, description, rooms, city, country, price} = this.props.data;
+        const {slug, name, photo, description, rooms, city, country, price, availabilityFrom, availabilityTo} = this.props.data;
+        const dateOptions = { weekday: 'long', year: 'numeric', day: 'numeric', month: 'long' };
+        const availabilityFromFormatted = new Date(availabilityFrom).toLocaleDateString("es-ES", dateOptions);
+        const availabilityToFormatted = new Date(availabilityTo).toLocaleDateString("es-ES", dateOptions);
         return(
             <div className="card">
                 <div className="card-image">
@@ -25,17 +27,27 @@ class Hotel extends React.Component {
                     <div className="field is-grouped is-grouped-multiline" style={{marginTop: '1em'}}>
                         <div className="control">
                             <div className="tags has-addons">
-                                <Location city={city} country={country} />
+                                <DataTag icon="map-marker" message={`${city}, ${country}`} />
                             </div>
                         </div>
                         <div className="control">
                             <div className="tags has-addons">
-                                <Room rooms={rooms} />
+                                <DataTag icon="bed" message={`${rooms} Habitaciones`} />
                             </div>
                         </div>
                         <div className="control">
                             <div className="tags">
                                 <Price price={price} slug={slug} />
+                            </div>
+                        </div>
+                        <div className="control">
+                            <div className="tags">
+                                <DataTag icon="sign-in-alt" message={`${availabilityFromFormatted}`} />
+                            </div>
+                        </div>
+                        <div className="control">
+                            <div className="tags">
+                                <DataTag icon="sign-out-alt" message={`${availabilityToFormatted}`} />
                             </div>
                         </div>
                     </div>
