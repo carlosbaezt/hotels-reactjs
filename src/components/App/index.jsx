@@ -68,21 +68,12 @@ class App extends React.Component {
         dateFrom.setHours(0, 0, 0);
         dateTo.setHours(23, 59, 59);
 
-        const dateFromInMiliseconds = dateFrom.getTime();
-        const dateToinMilisecods = dateTo.getTime();
-
         return hotels.filter((hotel) => {
-            if(
-                hotel.availabilityFrom >= dateFromInMiliseconds &&
-                hotel.availabilityTo <= dateToinMilisecods &&
-                (country === '' || country === hotel.country) &&
-                (price === '' || parseInt(price) === hotel.price) &&
-                (rooms === '' ||  hotel.rooms <= parseInt(rooms))
-            ) {
-                return true;
-            }
-
-            return false;
+            return  hotel.availabilityFrom >= dateFrom.getTime() &&
+                    hotel.availabilityTo <= dateTo.getTime() &&
+                    (country === '' || country === hotel.country) &&
+                    (price === '' || parseInt(price) === hotel.price) &&
+                    (rooms === '' ||  hotel.rooms <= parseInt(rooms))
         });
     }
 }
